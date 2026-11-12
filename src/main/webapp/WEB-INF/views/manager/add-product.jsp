@@ -1,0 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thêm mặt hàng</title><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/shopman.css"></head><body>
+<%@ include file="../fragments/header.jspf" %><div class="breadcrumb">SHOPMAN &nbsp;/&nbsp; AddProductView8</div><div class="layout"><nav class="sidebar"><a href="${pageContext.request.contextPath}/manager/products">Quản lý mặt hàng</a><a class="active" href="${pageContext.request.contextPath}/manager/products/add">Thêm mặt hàng</a><a href="#">Nhà cung cấp</a><a href="#">Nhập hàng</a><a href="#">Thống kê</a></nav>
+<main class="content"><h1>THÊM THÔNG TIN MẶT HÀNG</h1><c:if test="${not empty errors}"><ul class="errors"><c:forEach items="${errors}" var="e"><li>${e}</li></c:forEach></ul></c:if>
+<form class="panel" method="post"><p>Nhập đầy đủ thông tin. Các trường (*) là bắt buộc.</p><div class="form-grid">
+<label>Mã mặt hàng (*)</label><input class="input" name="productCode" value="${product.productCode}" required maxlength="30"><label>Loại hàng (*)</label><input class="input" name="productType" value="${product.productType}" required maxlength="100">
+<label>Tên mặt hàng (*)</label><input class="input wide" name="name" value="${product.name}" required maxlength="200">
+<label>Đơn vị tính (*)</label><input class="input" name="unit" value="${product.unit}" required maxlength="50"><label>Giá bán (*)</label><input class="input" type="number" min="0" step="0.01" name="price" value="${product.price}" required>
+<label>Số lượng tồn (*)</label><input class="input" type="number" min="0" name="stockQuantity" value="${product.stockQuantity}" required><label>Hình ảnh</label><input class="input" name="image" value="${product.image}" placeholder="ten-anh.png">
+<label>Mô tả</label><textarea class="input wide" name="description" rows="3">${product.description}</textarea>
+</div><div class="actions"><a class="btn secondary" href="${pageContext.request.contextPath}/manager/products">HỦY</a><button class="btn">XÁC NHẬN →</button></div></form></main></div></body></html>
